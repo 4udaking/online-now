@@ -20,7 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 16
     steps:
+      # Свіжий main, а не знімок на момент натискання: запуск, що чекав у черзі,
+      # має бачити слот, який щойно записав попередній.
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Слот
         run: python3 collect_slot.py
       - name: Запис
@@ -32,6 +36,7 @@ jobs:
           git commit -q -m "слот $(date -u +%Y-%m-%dT%H:%MZ)"
           for i in 1 2 3 4 5; do
             git pull -q --rebase && git push -q && exit 0
+            git rebase --abort 2>/dev/null || true
             sleep $((i * 5))
           done
           exit 1
