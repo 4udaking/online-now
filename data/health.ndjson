@@ -1,0 +1,1 @@
+{"slot": "2026-10-17T12:30:00Z", "start": "2026-10-17T12:30:47Z", "run": "39032807295", "event": "workflow_dispatch", "canary": "ok", "ok": 279, "stub": 0, "other": 1, "n": 280, "aborted": false, "end": "2026-10-17T12:42:59Z"}
