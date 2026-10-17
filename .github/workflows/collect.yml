@@ -1,0 +1,37 @@
+name: collect
+
+# Основний запуск — workflow_dispatch від зовнішнього будильника (Google Apps Script):
+# scheduled-події GitHub для цього акаунта спізнюються на години. Cron лишається
+# безкоштовним другим рубежем; повторний запуск того самого слоту виходить сам.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '3,18,33,48 * * * *'
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  slot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Слот
+        run: python3 collect_slot.py
+      - name: Запис
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -q -m "слот $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3 4 5; do
+            git pull -q --rebase && git push -q && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
