@@ -3192,3 +3192,4 @@
 {"slot": "2026-11-19T23:15:00Z", "start": "2026-11-19T23:19:50Z", "run": "44636697927", "event": "workflow_dispatch", "canary": "ok", "ok": 275, "stub": 0, "other": 5, "n": 280, "aborted": false, "end": "2026-11-19T23:28:00Z"}
 {"slot": "2026-11-19T23:30:00Z", "start": "2026-11-19T23:34:54Z", "run": "44638838845", "event": "workflow_dispatch", "canary": "ok", "ok": 275, "stub": 0, "other": 5, "n": 280, "aborted": false, "end": "2026-11-19T23:43:00Z"}
 {"slot": "2026-11-19T23:45:00Z", "start": "2026-11-19T23:49:51Z", "run": "44640871310", "event": "workflow_dispatch", "canary": "ok", "ok": 275, "stub": 0, "other": 5, "n": 280, "aborted": false, "end": "2026-11-19T23:58:00Z"}
+{"slot": "2026-11-20T00:00:00Z", "start": "2026-11-20T00:04:52Z", "run": "44642891107", "event": "workflow_dispatch", "canary": "ok", "ok": 275, "stub": 0, "other": 5, "n": 280, "aborted": false, "end": "2026-11-20T00:13:00Z"}
